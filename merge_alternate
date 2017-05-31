@@ -32,10 +32,6 @@ void printList(struct node *head)
     printf("\n");
 }
  
-// Main function that inserts nodes of linked list q into p at 
-// alternate positions. Since head of first list never changes 
-// and head of second list  may change, we need single pointer
-// for first list and double pointer for second list.
 void merge(struct node *p, struct node **q)
 {
      struct node *p_curr = p, *q_curr = *q;

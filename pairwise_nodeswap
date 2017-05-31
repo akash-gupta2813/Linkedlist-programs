@@ -1,3 +1,5 @@
+//iterative method
+
 void pairWiseSwap(struct node **head)
 {
     // If linked list is empty or there is only one node in list
@@ -30,4 +32,29 @@ void pairWiseSwap(struct node **head)
         prev = next;
         curr = prev->next;
     }
+}
+
+
+//recursive approch
+
+struct node *pairWiseSwap(struct node* head)
+{
+    // Base Case: The list is empty or has only one node
+    if (head == NULL || head->next == NULL)
+        return head;
+ 
+    // Store head of list after two nodes
+    struct node* remaing = head->next->next;
+ 
+    // Change head
+    struct node* newhead = head->next;
+ 
+    // Change next of second node
+    head->next->next = head;
+ 
+    // Recur for remaining list and change next of head
+    head->next = pairWiseSwap(remaing);
+ 
+    // Return new head of modified list
+    return newhead;
 }

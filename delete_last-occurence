@@ -1,0 +1,32 @@
+
+void deleteLast(Node* head, int key)
+{
+    // Initialize previous of Node to be deleted
+    Node* x = NULL;
+ 
+    // Start from head and find the Node to be
+    // deleted
+    Node* temp = head;
+    while (temp)
+    {
+        // If we found the key, update xv
+        if (temp->key == key)
+            x = temp;
+ 
+        temp = temp->next;
+    }
+ 
+    // key occurs atleast once
+    if (x != NULL)
+    {
+        // Copy key of next Node to x
+        x->key = x->next->key;
+ 
+        // Store and unlink next
+        temp = x->next;
+        x->next = x->next->next;
+ 
+        // Free memorey for next
+        delete temp;
+    }
+}
